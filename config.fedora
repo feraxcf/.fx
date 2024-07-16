@@ -1,0 +1,102 @@
+#!/bin/bash
+
+# Para probar el script ejecutar en docker: 
+# docker run --rm -v ~/.fx:/root/.fx -it fedora:40 bash
+# /root/.fx/config.fedora
+
+# Instalación de oh-my-posh
+
+omp=""
+while [[ "$omp" != "y" && "$omp" != "n" && "$omp" != "Y" && "$omp" != "N" ]]; do
+    read -p "¿Instalar oh-my-posh? (y/n): " omp
+done
+
+dock=""
+while [[ "$dock" != "y" && "$dock" != "n" && "$dock" != "Y" && "$dock" != "N" ]]; do
+    read -p "¿Instalar Docker? (y/n): " dock
+done
+
+bsh=""
+while [[ "$bsh" != "y" && "$bsh" != "n" && "$bsh" != "Y" && "$bsh" != "N" ]]; do
+    read -p "¿Agregar configuraciones a .bashrc? (y/n): " bsh
+done
+
+# Configuracion omp
+if [[ "$omp" == "y" || "$omp" == "Y" ]]; then
+    echo "Verificando dependencias [unzip]"
+    
+    if command -v unzip &> /dev/null; then
+        echo "unzip instalado"
+    else
+        echo "Se requiere unzip para instalar oh-my-posh"
+        
+        z=""
+        while [[ "$z" != "y" && "$z" != "n" && "$z" != "Y" && "$z" != "N" ]]; do
+            read -p "¿Desea instalar zip? (y/n): " z
+        done
+        
+        if [[ "$z" == "y" || "$z" == "Y" ]]; then
+            echo "Instalando unzip"
+            
+            echo "Para instalar zip se requieren permisos de superU"
+            sudo dnf -y install zip
+            
+            if command -v unzip &> /dev/null; then
+                echo "zip instalado correctamente ..."
+                echo "Continuando con la instalación de oh-my-posh"
+            
+            else
+                echo "No se pudo instalar unzip"
+                echo "No se instalará oh-my-posh"
+                omp="n"
+            fi
+        fi
+    fi
+    
+    if [[ "$omp" == "y" || "$omp" == "Y" ]]; then
+        echo "Instalando oh-my-posh"
+        export omp_path="$HOME/.fx/.omp"
+        mkdir -p "$omp_path"
+        echo "Descarga en curso"
+        curl -s 'https://ohmyposh.dev/install.sh' | bash -s -- -d "$omp_path"
+        export bashconf=$(echo -e "\n # Path omp\n export PATH=\$PATH:$omp_path\n \n " | sed 's/\\n/\n/g')
+    else
+        echo "No se instalará oh-my-posh"
+        export omp_path=""
+        export bashconf=""
+    fi
+else
+    echo "No se instalará oh-my-posh"
+    export omp_path=""
+    export bashconf=""
+fi
+
+# Configuracion docker
+
+if [[ "$dock" == "y" || "$dock" == "Y" ]]; then
+    echo "Para instalar docker se requieren permisos de superU"
+    sudo dnf -y install dnf-plugins-core
+    sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+    echo "Instalando docker"
+    sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    echo "Añadiendo al grupo $USER"
+    sudo usermod -aG docker $USER
+    groups $USER
+    echo -e "Para poder usar docker sin sudo, reinicie la session"
+else
+    echo "No se instalará docker"
+fi
+
+# Configuración de .bashrc
+if [[ "$bsh" == "y" || "$bsh" == "Y" ]]; then
+    echo "Configurando .bashrc"
+    
+    cp ~/.bashrc ~/.bashrc.bak
+    cat ~/.fx/bash/bash.shell | awk 'BEGIN{print ENVIRON["bashconf"]} {print $0}' >> ~/.bashrc
+
+    echo -e "\n¡Listo!\n"
+
+    echo -e "Ejecutar source ~/.bashrc para actualizar la seccion actual"
+
+    echo -e "Restaurar .bashrc: cp ~/.bashrc.bak ~/.bashrc; source $HOME/.bashrc; rm -r ~/.fx/.omp"
+fi

@@ -1,0 +1,23 @@
+{
+    "background": "#1E1E2E",
+    "black": "#7373A3",
+    "blue": "#89B4FA",
+    "brightBlack": "#46466C",
+    "brightBlue": "#89DCEB",
+    "brightCyan": "#94E2D5",
+    "brightGreen": "#A6F7C3",
+    "brightPurple": "#A04792",
+    "brightRed": "#F38BA8",
+    "brightWhite": "#CDD6F4",
+    "brightYellow": "#F9F1A5",
+    "cursorColor": "#DC9AFF",
+    "cyan": "#B4BEFE",
+    "foreground": "#CDD6F4",
+    "green": "#A6E3A1",
+    "name": "ferax",
+    "purple": "#881798",
+    "red": "#C50F1F",
+    "selectionBackground": "#7373A3",
+    "white": "#A6ADC8",
+    "yellow": "#FDCB9F"
+}

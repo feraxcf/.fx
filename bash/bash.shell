@@ -1,0 +1,13 @@
+# Para añadir estos comandos en la terminal
+# por favor agregar este codigo en .bashsrc
+# feraxhp github preferences
+
+if [ -d ~/.fx/bash ]; then
+    for rc in -d ~/.fx/bash/*.bash; do
+        if [ -f "$rc" ]; then
+            . "$rc"
+        fi
+    done
+fi
+
+unset rc
