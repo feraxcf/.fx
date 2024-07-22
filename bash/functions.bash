@@ -7,13 +7,19 @@ bd(){
     cd ..
 }
 
+reload(){
+    source ~/.bashrc
+}
+
 activate() {
     venv=".venv"
     if [ "$1" != "" ]; then
         venv="$1"
     fi
-    if [ -d "./$venv" ]; then
+    if [ -d "./$venv/bin" ]; then
         . "./$venv/bin/activate"
+    elif [ -d "./$venv/Scripts" ]; then
+        . "./$venv/Scripts/activate"
     else
         echo "There is not a venv directory"
         echo "Directory name: $venv"
