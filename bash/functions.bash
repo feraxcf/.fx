@@ -35,6 +35,8 @@ fm(){
 
     if command -v gnome-shell &> /dev/null; then
         nautilus "$path"
+    elif command -v explorer.exe &> /dev/null; then
+        explorer.exe "$path"
     else
         echo "No file manager found"
     fi
