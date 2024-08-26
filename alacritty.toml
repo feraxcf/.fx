@@ -1,0 +1,14 @@
+[window]
+
+dimensions = { columns = 150, lines = 30 }
+title = "Hi feraxhp"
+dynamic_title = false
+opacity = 0.995
+
+[keyboard]
+
+bindings = [
+{ key = "c", mods = "Control", action = "Copy" },
+{ key = "v", mods = "Control", chars = "Paste" },
+{ key = "C", mods = "Control|Shift", action = "Quit" },
+]
