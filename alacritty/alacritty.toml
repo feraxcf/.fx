@@ -13,4 +13,11 @@ bindings = [
     { key = "c", mods = "Control", action = "Copy" },
     { key = "v", mods = "Control", action = "Paste" },
     { key = "C", mods = "Control|Shift", chars = "\u0003" },
+    { key = "M", mods = "Control|Shift", action = "ToggleViMode" },
+    { key = "s", mode = "Vi", action = "ToggleNormalSelection" },
+    { key = "Escape", mode = "Vi", action = "ToggleViMode" },
+    { key = "Right", mods = "Control", mode = "Vi", action = "WordRightEnd" },
+    { key = "Left", mods = "Control", mode = "Vi", action = "WordLeftEnd" },
+    { key = "Up", mods = "Control", mode = "Vi", action = "Up" },
+    { key = "Down", mods = "Control", mode = "Vi", action = "Down" },
 ]
