@@ -1,0 +1,16 @@
+# rm $HOME/.config/alacritty/alacritty.toml &>Dev; ln $HOME/.fx/alacritty/alacritty.toml $HOME/.config/alacritty/alacritty.toml
+
+[window]
+
+dimensions = { columns = 150, lines = 30 }
+title = "Hi feraxhp"
+dynamic_title = false
+opacity = 0.995
+
+[keyboard]
+
+bindings = [
+    { key = "c", mods = "Control", action = "Copy" },
+    { key = "v", mods = "Control", action = "Paste" },
+    { key = "C", mods = "Control|Shift", chars = "\u0003" },
+]
