@@ -58,9 +58,14 @@
                     "type": "time"
                 },
                 {
-                    "foreground": "red",
+                    "foreground": "lightGreen",
                     "style": "plain",
-                    "template": " C:{{ if gt .Code 0 }}{{ .Code }}{{ end }} ",
+                    "template": "{{ if .Env.SSH_CONNECTION }} (●ssh) {{ end }}",
+                    "type": "text"
+                },
+                {
+                    "style": "plain",
+                    "template": "{{ if gt .Code 0 }}<red>[{{ .Code }}]</>{{ end }}",
                     "type": "status"
                 }
             ],

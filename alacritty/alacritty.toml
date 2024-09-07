@@ -2,7 +2,7 @@
 
 [window]
 
-dimensions = { columns = 150, lines = 30 }
+# dimensions = { columns = 80, lines = 20 }
 title = "Hi feraxhp"
 dynamic_title = false
 opacity = 0.995
