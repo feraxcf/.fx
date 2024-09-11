@@ -62,5 +62,9 @@ install-alacritty() {
     cd $HOME
     rm -fr $dir
     
+    echo "adding contigurations"
+    mkdir -p $HOME/.config/alacritty/
+    ln $HOME/.fx/alacritty/alacritty.toml $HOME/.config/alacritty/alacritty.toml
+    
     echo "Done"
 }
