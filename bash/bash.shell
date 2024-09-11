@@ -11,3 +11,4 @@ if [ -d ~/.fx/bash ]; then
 fi
 
 unset rc
+unset SSH_ASKPASS
