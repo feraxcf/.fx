@@ -32,7 +32,7 @@ fm(){
     if command -v gnome-shell &> /dev/null; then
         nautilus "$path"
     elif command -v explorer.exe &> /dev/null; then
-        explorer.exe "$path"
+        explorer.exe "$@"
     elif command -v dolphin &> /dev/null; then
         dolphin "$path"
     else
