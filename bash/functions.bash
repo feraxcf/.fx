@@ -39,3 +39,26 @@ fm(){
         echo "No file manager found"
     fi
 }
+
+lenv() {
+    ENV_FILE="$1"
+    
+    if [ ! -f "$ENV_FILE" ]; then
+        echo "The file '$ENV_FILE' does not exist" >&2
+      exit 1
+    fi
+    
+    while IFS= read -r line; do
+      [[ -z "$line" || "$line" =~ ^# ]] && continue
+    
+      key=$(echo "$line" | cut -d':' -f1 | xargs)
+      value=$(echo "$line" | cut -d':' -f2- | xargs)
+    
+      if [[ -n "$key" ]]; then
+        export "$key"="$value"
+        echo "$key exported" 
+      fi
+    done < "$ENV_FILE"
+    
+    echo "Finish load: '$ENV_FILE'"
+}
