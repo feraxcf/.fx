@@ -1,6 +1,5 @@
 # Git Alias
 alias ga='git add'
-alias gl='git log --oneline'
 alias gs='git status -s'
 alias gc='git commit -m "'
 alias gb='git branch'
@@ -16,4 +15,9 @@ alias gcm='git commit'
 gsa() {
     git add $@
     git status -s
+}
+
+gl() {
+    amount=${1:-10}
+    git --no-pager log --oneline --graph -n $amount
 }
