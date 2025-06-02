@@ -10,3 +10,13 @@
 # echo -e "   ■   ■      ■  ■"
 # echo -e "    ■▄■        ■■ "
 # echo -e "                  "
+
+echo -e "\e[36m"
+echo "  ∕⁀⧵             "
+echo "  \ ∕        ∕⁀⧵  "
+echo "   X            | "
+echo "  / \ ∕⁀⧵   |   | "
+echo " |   |   ⧵‿∕ \ /  "
+echo " |            X   "
+echo "  ⧵‿∕        ∕ \  "
+echo "             ⧵‿∕  "
