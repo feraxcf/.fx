@@ -10,3 +10,6 @@ alias tp='cd ~/projects/tprojects'
 
 # Rust-related aliases
 alias cw='bacon --headless run-long -- -q'
+
+# Python
+alias py='python'
