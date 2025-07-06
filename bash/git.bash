@@ -21,3 +21,7 @@ gl() {
     amount=${1:-10}
     git --no-pager log --oneline --graph -n $amount
 }
+
+gd() {
+    git --no-pager diff "$@"
+}
