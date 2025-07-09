@@ -5,6 +5,7 @@ alias gc='git commit -m "'
 alias gb='git branch'
 alias gp='git push'
 alias gj='git pull' # git [jalar/jerk]
+alias gr='git reset'
 alias gas='git add .; git status -s'
 alias gck='git checkout'
 alias gcb='git checkout -b'

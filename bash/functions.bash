@@ -7,6 +7,21 @@ bd(){
   cd .. 
 }
 
+clc () {
+    # https://www.gnu.org/software/gawk/manual/html_node/Numeric-Functions.html
+    local expression="$*"
+
+    if [ -z "$expression" ]; then
+        echo "Use: c \"<expresion_matematica>\""
+        return 1
+    fi
+
+    expression="${expression//pi/atan2(0, -1)}"
+    expression="${expression//e/exp(1)}"
+
+    gawk -M -v PREC=201 'BEGIN { printf("%.60g\n", ('"${expression}"') ) }' < /dev/null
+}
+
 activate() {
     venv=".venv"
     if [ "$1" != "" ]; then
