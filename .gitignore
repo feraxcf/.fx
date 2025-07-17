@@ -1,3 +1,2 @@
-.omp
-.wsl
-.unix
+.*
+!.gitignore

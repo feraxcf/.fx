@@ -1,0 +1,26 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+format = "[#](blue) [$all](dimmed black)"
+continuation_prompt = "[●](dimmed purple) "
+
+[character]
+success_symbol = '[●](green)'
+error_symbol = '[◌](red)'
+
+[username]
+show_always = true
+style_user = "green bold"
+format = '[$user]($style) @ '
+
+[directory]
+style = "yellow bold"
+
+[git_branch]
+style = "bold cyan"
+only_attached = true
+
+[git_status]
+untracked = "?"
+

@@ -13,3 +13,6 @@ alias cw='bacon --headless run-long -- -q'
 
 # Python
 alias py='python'
+
+# Web related
+alias ppm='pnpm'
