@@ -18,3 +18,12 @@ alias py='python'
 
 # Web related
 alias ppm='pnpm'
+
+# Alternative commands
+# if command -v eza &> /dev/null; then alias tree='eza -T'; fi
+if command -v eza &> /dev/null; then 
+    alias ls='eza --git --group-directories-first'
+    alias tree='eza -T'
+fi
+
+if command -v bat &> /dev/null; then alias cat='bat'; fi
