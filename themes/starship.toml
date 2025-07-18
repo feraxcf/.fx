@@ -249,7 +249,7 @@ detect_files = [
 detect_folders = []
 
 [directory]
-truncation_length = 3
+truncation_length = 0
 truncate_to_repo = true
 fish_style_pwd_dir_length = 0
 use_logical_path = true

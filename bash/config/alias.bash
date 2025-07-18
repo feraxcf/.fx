@@ -1,14 +1,29 @@
 
 # General aliases
 alias cl='clear'
-alias fx='cd ~/.fx'
-alias fxd='$HOME/.fx'
 alias x='exit 0'
 alias rl='source ~/.bashrc'
-alias pp='cd ~/projects/pprojects'
-alias tp='cd ~/projects/tprojects'
-alias dw='cd ~/Downloads || cd ~/downloads'
-alias dc='cd ~/Documents || cd ~/documents'
+
+# frecuent paths 
+move_to() {
+    path="$1/$2"
+    cd $path
+}
+
+move_fb() {
+    path1="$1/$3"
+    path2="$2/$3"
+    
+    cd $path1 &> /dev/null || 
+    cd $path2 &> /dev/null || 
+    echo -e "paths not found:\n1. $path1\n2. $path2"
+}
+
+alias fx='move_to ~/.fx'
+alias pp='move_to ~/projects/pprojects'
+alias tp='move_to ~/projects/tprojects'
+alias dw='move_fb ~/Downloads ~/downloads'
+alias dc='move_fb ~/Documents ~/documents'
 
 # Rust-related aliases
 alias cw='bacon --headless run-long -- -q'
