@@ -1,6 +1,6 @@
 # by feraxhp <https://github.com/feraxhp>
 
-export current=$(realpath .)
+export current=$(realpath ~/.fx)
 
 for rc in -d $current/bash/config/*.bash; do
     if [ -f "$rc" ]; then
