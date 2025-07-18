@@ -2,7 +2,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = false
-format = "[#](blue) [$all](dimmed black)"
+format = "[#](blue) [$all](dimmed)"
 continuation_prompt = "[●](dimmed purple) "
 
 [character]
@@ -12,7 +12,8 @@ error_symbol = '[◌](red)'
 [username]
 show_always = true
 style_user = "green bold"
-format = '[$user]($style) @ '
+format = '([$user]($style) )'
+aliases = { feraxhp = "" }
 
 [directory]
 style = "yellow bold"
@@ -22,5 +23,38 @@ style = "bold cyan"
 only_attached = true
 
 [git_status]
-untracked = "?"
+disabled = false
+format = "([{ $staged$renamed$modified$untracked$deleted$typechanged$conflicted$stashed}]($style) )"
 
+diverged = "⇕"
+ahead = "⇡"
+behind = "⇣"
+up_to_date = ""
+
+modified = "[* ](yellow)"
+# renamed = "[◎ ](yellow)"
+renamed = ""
+
+conflicted = ""
+typechanged = ""
+
+staged = "[◉ ](green)"
+stashed = ""
+
+untracked = "[⁇ ](red)"
+# deleted = "[◌ ](bold red)"
+deleted = ""
+style = "blue"
+
+ignore_submodules = false
+use_git_executable = false
+
+[git_commit]
+format = "on [ \\($hash$tag\\)]($style)"
+tag_disabled = false
+style = "green cyan"
+
+[git_state]
+disabled = false
+cherry_pick = '[🍒 PICKING](bold red)'
+merge = '[🥣 MERGING](bold yellow)'
