@@ -1,4 +1,6 @@
 netscan() {
+    mkdir $HOME/.temp
+    
     time=1
     url="$1"
     if [[ $url = "" ]]; then

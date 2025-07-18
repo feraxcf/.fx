@@ -3,9 +3,7 @@ mkcd() {
     cd "$1"
 }
 
-bd(){ 
-  cd .. 
-}
+alias bd='cd ..'
 
 clc () {
     # https://www.gnu.org/software/gawk/manual/html_node/Numeric-Functions.html
