@@ -421,7 +421,7 @@ added_style = "bold green"
 deleted_style = "bold red"
 only_nonzero_diffs = true
 format = "([{ ](blue)[$added]($added_style)|)([$deleted]($deleted_style)[ }](blue) )"
-disabled = false
+disabled = true
 ignore_submodules = false
 
 [git_state]
