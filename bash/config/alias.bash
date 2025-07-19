@@ -22,6 +22,7 @@ move_fb() {
 alias fx='move_to ~/.fx'
 alias pp='move_to ~/projects/pprojects'
 alias tp='move_to ~/projects/tprojects'
+alias jp='move_to ~/projects/jprojects'
 alias dw='move_fb ~/Downloads ~/downloads'
 alias dc='move_fb ~/Documents ~/documents'
 
