@@ -606,7 +606,7 @@ number_threshold = 2
 format = "[$symbol$number]($style) "
 symbol = "✦"
 style = "bold blue"
-disabled = false
+disabled = true
 
 [julia]
 format = "via [$symbol($version )]($style)"
