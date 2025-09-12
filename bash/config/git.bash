@@ -14,6 +14,7 @@ alias gcm='git commit'
 if command -v grp &> /dev/null; then
     alias gp='grp push'
     alias gj='grp pull'
+    alias gcl='grp clone'
 else
     alias gp='git push'
     alias gj='git pull'
