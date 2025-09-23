@@ -3,6 +3,7 @@
 alias cl='clear'
 alias x='exit 0'
 alias rl='source ~/.bashrc'
+alias rs='cl && rl'
 
 # frecuent paths 
 move_to() {
