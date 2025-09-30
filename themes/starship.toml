@@ -1225,6 +1225,7 @@ disabled = false
 
 [username.aliases]
 feraxhp = ""
+HumbertoParra = "avvale"
 
 [vagrant]
 format = "via [$symbol($version )]($style)"
