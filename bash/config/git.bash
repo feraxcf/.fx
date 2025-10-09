@@ -6,7 +6,7 @@ alias gb='git branch'
 alias gr='git reset'
 alias gas='git add .; git status -s'
 alias gck='git checkout'
-alias gcb='git checkout -b'
+alias gcb='git switch -c'
 alias gsr='git reset --soft HEAD^'
 alias gcm='git commit'
 
