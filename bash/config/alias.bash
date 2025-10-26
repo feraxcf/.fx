@@ -40,7 +40,8 @@ alias ppm='pnpm'
 # if command -v eza &> /dev/null; then alias tree='eza -T'; fi
 if command -v eza &> /dev/null; then 
     alias ls='eza --git --group-directories-first'
-    alias tree='eza -T'
+    alias tree='eza --git -T'
 fi
 
 if command -v bat &> /dev/null; then alias cat='bat'; fi
+if command -v msedit &> /dev/null; then alias edit='msedit'; fi

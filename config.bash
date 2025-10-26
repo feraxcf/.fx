@@ -12,6 +12,9 @@ echo "adding folder structure ..."
 mkdir -p ~/projects/{p,t,j}projects
 echo ""
 
+echo "adding git config ..."
+mkdir -p ~/.fx/cfgs/git.bash
+echo ""
 
 echo "checking package manager ..."
 HAS_WINGET=false
