@@ -26,7 +26,9 @@ if command -v dnf &>/dev/null; then HAS_DNF=true; fi
 HAS_APT=false
 if command -v apt &>/dev/null; then HAS_APT=true; fi
 
-if "$HAS_WINGET"; then
+if [[ "$1" == "-n" ]]; then
+    echo "♐ Skiping ..."
+elif "$HAS_WINGET"; then
     echo "🔥 using winget."
     ~/.fx/cfgs/winget.bash
 elif "$HAS_DNF"; then
