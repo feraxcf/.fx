@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Para probar el script ejecutar en docker: 
-# docker run --rm -v ~/.fx:/root/.fx -it fedora:40 bash
+# docker run --rm -v ~/.fx:/root/.fx -it fedora:43 bash
 # /root/.fx/config.fedora
 
 echo "adding bash config ..."
@@ -13,7 +13,7 @@ mkdir -p ~/projects/{p,t,j}projects
 echo ""
 
 echo "adding git config ..."
-mkdir -p ~/.fx/cfgs/git.bash
+~/.fx/cfgs/git.bash
 echo ""
 
 echo "checking package manager ..."
