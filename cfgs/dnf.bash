@@ -2,7 +2,8 @@ sudo dnf install -y \
 zip \
 btop \
 eza \
-bat
+bat \
+jq
 
 echo "-> Installing starship"
 curl -sS https://starship.rs/install.sh | sh
