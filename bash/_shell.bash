@@ -1,5 +1,11 @@
 # ~/.bashrc
 
+if command -v fzf &> /dev/null; then
+    export FZF_ALT_C_COMMAND=
+    export FZF_COMPLETION_PATH_COMMANDS='edit'
+    eval "$(fzf --bash)"
+fi
+
 if command -v starship &> /dev/null; then
     export STARSHIP_CONFIG=~/.fx/themes/starship.toml
     eval "$(starship init bash)"
