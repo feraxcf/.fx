@@ -1,11 +1,28 @@
 # rm $HOME/.config/alacritty/alacritty.toml &>Dev; ln $HOME/.fx/alacritty/alacritty.toml $HOME/.config/alacritty/alacritty.toml
 
+general.import = [
+  # uncomment the flavour you want below:
+  # "~/.config/alacritty/catppuccin-latte.toml"
+  # "~/.config/alacritty/catppuccin-frappe.toml"
+  "~/.config/alacritty/catppuccin-macchiato.toml"
+  # "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
 [window]
 
 # dimensions = { columns = 80, lines = 20 }
-title = "Hi feraxhp"
+title = "Hi feraxhp 🦾"
 dynamic_title = false
 opacity = 0.995
+decorations = "None"
+padding = { x = 20, y = 10 }
+startup_mode = "Maximized"
+
+[font]
+normal = { family = "JetBrains Mono" }
+bold = { family = "JetBrains Mono" }
+italic = { family = "JetBrains Mono" }
+bold_italic = { family = "JetBrains Mono" }
 
 [keyboard]
 
@@ -14,10 +31,8 @@ bindings = [
     { key = "v", mods = "Control", action = "Paste" },
     { key = "C", mods = "Control|Shift", chars = "\u0003" },
     { key = "M", mods = "Control|Shift", action = "ToggleViMode" },
-    { key = "s", mode = "Vi", action = "ToggleNormalSelection" },
+    { key = "V", mods = "Shift", action = "ToggleViMode" },
+    { key = "V", mods = "Shift", mode = "Vi", action = "ToggleViMode" },
     { key = "Escape", mode = "Vi", action = "ToggleViMode" },
-    { key = "Right", mods = "Control", mode = "Vi", action = "WordRightEnd" },
-    { key = "Left", mods = "Control", mode = "Vi", action = "WordLeftEnd" },
-    { key = "Up", mods = "Control", mode = "Vi", action = "Up" },
-    { key = "Down", mods = "Control", mode = "Vi", action = "Down" },
 ]
+
