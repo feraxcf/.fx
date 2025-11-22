@@ -35,3 +35,29 @@ gl() {
 gd() {
     git --no-pager diff "$@"
 }
+
+# Set git autocompletion to bash 
+if [ -f "$current/.tmp/.git-completion.bash" ]; then
+    . "$current/.tmp/.git-completion.bash"
+fi
+
+# Autocompletion
+if command -v __git_complete &> /dev/null; then
+    export GIT_COMPLETION_CHECKOUT_NO_GUESS=1
+    
+    __git_complete ga  git_add
+    # __git_complete gs  ---
+    # __git_complete gc  ---
+    __git_complete gb  git_branch
+    __git_complete gr  git_reset
+    # __git_complete gas ---
+    __git_complete gck git_checkout
+    # __git_complete gcb ---
+    # __git_complete gsr ---
+    # __git_complete gcm ---
+    __git_complete gp  git_push
+    __git_complete gj  git_pull
+    __git_complete gsa git_add
+    __git_complete gl  git_log
+    __git_complete gd  git_diff
+fi
