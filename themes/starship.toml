@@ -160,7 +160,7 @@ disabled = false
 format = '[$symbol \[$name\]]($style) '
 symbol = "⬢"
 style = "red bold dimmed"
-disabled = false
+disabled = true
 
 [cpp]
 format = "via [$symbol($version(-$name) )]($style)"
