@@ -9,10 +9,12 @@ dsm() {
         echo "❌ docker no está instalado"
         return 1
     fi
-    if [[ $# -ne 1 ]]; then
-        echo "❌ Se requieren exactamente 1 argumentos: <docker id>"
+    if [[ $# -lt 1 ]]; then
+        echo "❌ Se requiere al menos 1 argumento: <docker id>"
         return 1
     fi
     
-    docker rm $(docker stop $1)
+    for a in "$@"; do
+        echo "removed $(docker rm $(docker stop $a))"
+    done
 }
