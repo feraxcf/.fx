@@ -1,3 +1,7 @@
 alias sm='powershell.exe -Command "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.SendKeys]::SendWait('\'^{ESC}\'')"'
 alias r2uefi='sudo shutdown -r -fw -t 1'
 alias ad="move_to \$APPDATA"
+
+_ad_completion() { _move_completion "$APPDATA"; }
+
+complete -F _ad_completion ad
