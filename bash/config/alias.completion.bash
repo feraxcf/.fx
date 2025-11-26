@@ -4,7 +4,7 @@ _move_completion() {
     prefix="${COMP_WORDS[$COMP_CWORD]}"
     
     if [ "$COMP_CWORD" == 1 ]; then
-        COMPREPLY=($(cd "$base_dir" && compgen -d "$prefix"))
+        COMPREPLY=($(cd "$base_dir" && compgen -d "$prefix" | sed 's/$/\//'))
     fi
 }
 
@@ -13,10 +13,10 @@ _pp_completion() { _move_completion "$HOME/projects/pprojects"; }
 _jp_completion() { _move_completion "$HOME/projects/jprojects"; }
 _tp_completion() { _move_completion "$HOME/projects/tprojects"; }
 
-complete -F _fx_completion fx
-complete -F _pp_completion pp
-complete -F _jp_completion jp
-complete -F _tp_completion tp
+complete  -o nospace -F _fx_completion fx
+complete  -o nospace -F _pp_completion pp
+complete  -o nospace -F _jp_completion jp
+complete  -o nospace -F _tp_completion tp
 
 _dw_completion() {
     if   [ -d "$HOME/Downloads" ]; then _move_completion "$HOME/Downloads";
@@ -30,5 +30,5 @@ _dc_completion() {
     fi
 }
 
-complete -F _dw_completion dw
-complete -F _dc_completion dc
+complete -o nospace -F _dw_completion dw
+complete -o nospace -F _dc_completion dc
