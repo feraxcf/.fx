@@ -9,7 +9,7 @@ alias gck='git checkout'
 alias gcb='git switch -c'
 alias gsr='git reset --soft HEAD^'
 alias gcm='git commit'
-alias gst='for i in $(ls); do echo "* $i " && git -C $i log --oneline -n 1; done'
+alias gst='for i in $(ls -d */); do echo "* $i " && git -C $i log --oneline -n 1; done'
 
 # grp
 if command -v grp &> /dev/null; then
