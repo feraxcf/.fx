@@ -16,6 +16,7 @@ if command -v grp &> /dev/null; then
     alias gp='grp push'
     alias gj='grp pull'
     alias gcl='grp clone'
+    source <(COMPLETE=bash grp)
 else
     alias gp='git push'
     alias gj='git pull'
