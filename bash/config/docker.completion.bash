@@ -5,7 +5,7 @@ _dsm_completion() {
     
     if [ ${COMP_CWORD} > 1 ]; then
         # Complete with running container IDs or names
-        opts=$(docker ps --format "{{.ID}} {{.Names}}")
+        opts=$(docker ps -a --format "{{.ID}} {{.Names}}")
         COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
     fi
 }
