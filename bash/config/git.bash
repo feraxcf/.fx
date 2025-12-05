@@ -26,6 +26,8 @@ alias gsr='git reset --soft HEAD^'
 alias gcm='git commit'
 alias gst='for i in $(ls -d */); do echo "* $i " && git -C $i log --oneline -n 1; done'
 alias rtag='___git_add_tag "' 
+alias lst='git tag -l'
+alias stag="git tag -l --format='%(contents)'"
 
 # grp
 if command -v grp &> /dev/null; then
