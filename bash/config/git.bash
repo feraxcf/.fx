@@ -1,3 +1,18 @@
+# Git helper functions
+
+___git_add_tag() {
+    [[ $# -eq 2 ]] || { 
+        CYAN='\033[0;36m'
+        YELLOW='\033[0;33m'
+        NC='\033[0m' # No Color (para resetear)
+        
+        echo -e "usage rtag ${CYAN}<message>${NC}\" ${YELLOW}<tag>${NC}\n  -> ___git_add_tag \"${CYAN}<message>${NC}\" ${YELLOW}<tag>${NC}\n  -> git tag ${YELLOW}<tag>${NC} -m ${CYAN}<message>${NC}"
+        return 1 
+    }
+    git tag "$2" -m "$1"
+}
+
+
 # Git Alias
 alias ga='git add'
 alias gs='git status -s'
@@ -10,6 +25,7 @@ alias gcb='git switch -c'
 alias gsr='git reset --soft HEAD^'
 alias gcm='git commit'
 alias gst='for i in $(ls -d */); do echo "* $i " && git -C $i log --oneline -n 1; done'
+alias rtag='___git_add_tag "' 
 
 # grp
 if command -v grp &> /dev/null; then
