@@ -4,7 +4,7 @@ format = "[#](blue) [$username$hostname$localip$shlvl$singularity$kubernetes$nat
 right_format = ""
 continuation_prompt = "[●](dimmed purple) "
 scan_timeout = 10
-command_timeout = 200
+command_timeout = 250
 add_newline = false
 follow_symlinks = true
 
