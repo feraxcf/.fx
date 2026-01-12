@@ -3,6 +3,8 @@
 init() {
     export current=$(realpath ~/.fx)
     
+    [[ -d "$HOME/.cargo/bin" ]] && export PATH="$HOME/.cargo/bin:$PATH"
+    
     for rc in -d $current/bash/config/*.bash; do
         if [ -f "$rc" ]; then
             . "$rc"
