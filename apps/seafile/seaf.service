@@ -1,0 +1,16 @@
+# Systemd service file for Seafile CLI
+# /etc/systemd/system/seaf-cli.service
+[Unit]
+Description=Seafile Client Service
+After=network.target
+
+[Service]
+Type=forking
+User=feraxhp
+ExecStart=/usr/bin/seaf-cli start
+ExecStop=/usr/bin/seaf-cli stop
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

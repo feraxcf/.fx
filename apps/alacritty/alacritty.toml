@@ -4,8 +4,9 @@ general.import = [
   # uncomment the flavour you want below:
   # "~/.config/alacritty/catppuccin-latte.toml"
   # "~/.config/alacritty/catppuccin-frappe.toml"
-  "~/.config/alacritty/catppuccin-macchiato.toml"
+  # "~/.config/alacritty/catppuccin-macchiato.toml"
   # "~/.config/alacritty/catppuccin-mocha.toml"
+  "/home/feraxhp/.config/alacritty/themes/noctalia.toml"
 ]
 
 [window]
@@ -16,7 +17,7 @@ dynamic_title = false
 opacity = 0.995
 decorations = "None"
 padding = { x = 20, y = 10 }
-startup_mode = "Maximized"
+# startup_mode = "Maximized"
 
 [font]
 normal = { family = "JetBrains Mono" }
