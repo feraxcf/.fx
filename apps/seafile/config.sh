@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 
-sudo cp $HOME/.fx/apps/seafile/seaf.service /etc/systemd/system/seaf-cli.service
-sudo systemctl daemon-reload
-sudo systemctl enable seaf-cli.service
-sudo systemctl start seaf-cli.service
-sudo systemctl status seaf-cli.service
+config() {
+    local origin="$HOME/.fx/apps/seafile/seaf.service"
+    
+    sudo cp "$origin" /etc/systemd/system/seaf-cli.service
+    
+    sudo systemctl daemon-reload
+    sudo systemctl enable --now seaf-cli.service
+    
+    echo configured
+}
 
-echo
-echo configured
+config
