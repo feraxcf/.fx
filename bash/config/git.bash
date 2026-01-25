@@ -28,6 +28,7 @@ alias gst='for i in $(ls -d */); do echo "* $i " && git -C $i log --oneline -n 1
 alias rtag='___git_add_tag "' 
 alias lst='git tag -l'
 alias stag="git tag -l --format='%(contents)'"
+alias gnt="git update-index --assume-unchanged"
 
 # grp
 if command -v grp &> /dev/null; then
