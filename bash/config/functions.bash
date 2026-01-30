@@ -1,6 +1,13 @@
 mkcd() {
+    [[ -z "$1" ]] && return 1;
     mkdir -p "$1"
     cd "$1"
+}
+
+mksh() {
+    [[ -z "$1" ]] && return 1;
+    touch "$1"
+    chmod +x "$1"
 }
 
 alias bd='cd ..'
