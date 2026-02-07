@@ -7,7 +7,8 @@ if command -v fzf &> /dev/null; then
 fi
 
 if command -v starship &> /dev/null; then
-    export STARSHIP_CONFIG=~/.fx/themes/starship.toml
+    export STARSHIP_CONFIG=~/.fx/themes/starship.toml 
+    export STARSHIP_LOG=error 
     eval "$(starship init bash)"
 
 elif command -v oh-my-posh &> /dev/null; then
