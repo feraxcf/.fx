@@ -15,6 +15,8 @@ config() {
     } || {
         echo -e "$main" >> $target/.bashrc
     }
+    
+    echo "* $target configured!" 
 }
 
 config "$@"
