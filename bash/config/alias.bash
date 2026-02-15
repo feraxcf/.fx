@@ -26,6 +26,7 @@ alias tp='move_to ~/projects/tprojects'
 alias jp='move_to ~/projects/jprojects'
 alias dw='move_fb ~/Downloads ~/downloads'
 alias dc='move_fb ~/Documents ~/documents'
+alias home='move_to ~'
 
 # Rust-related aliases
 alias cw='bacon --headless run-long -- -q'

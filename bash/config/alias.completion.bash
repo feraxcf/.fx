@@ -12,11 +12,13 @@ _fx_completion() { _move_completion "$HOME/.fx"; }
 _pp_completion() { _move_completion "$HOME/projects/pprojects"; }
 _jp_completion() { _move_completion "$HOME/projects/jprojects"; }
 _tp_completion() { _move_completion "$HOME/projects/tprojects"; }
+_home_completion() { _move_completion "$HOME"; }
 
 complete  -o nospace -F _fx_completion fx
 complete  -o nospace -F _pp_completion pp
 complete  -o nospace -F _jp_completion jp
 complete  -o nospace -F _tp_completion tp
+complete  -o nospace -F _home_completion home 
 
 _dw_completion() {
     if   [ -d "$HOME/Downloads" ]; then _move_completion "$HOME/Downloads";
