@@ -4,7 +4,7 @@ if command -v docker &> /dev/null; then
     # echo "Docker is not instaled is not in your path"
 fi
 
-dsm() {
+dremove() {
     if ! command -v docker &> /dev/null; then
         echo "❌ docker no está instalado"
         return 1
@@ -17,4 +17,13 @@ dsm() {
     for a in "$@"; do
         echo "removed $(docker rm $(docker stop $a))"
     done
+}
+
+dps() {
+    if ! command -v docker &> /dev/null; then
+        echo "❌ Docker is not installed."
+        return 1
+    fi
+
+    docker ps --format "table {{.ID}} {{.Names}}\t{{.Image}}\t{{.Status}}"
 }

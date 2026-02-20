@@ -1,4 +1,4 @@
-_dsm_completion() {
+_dremove_completion() {
     local cur opts
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
@@ -7,4 +7,4 @@ _dsm_completion() {
         COMPREPLY=( $(compgen -W "$(docker ps -a --format "{{.ID}} {{.Names}}")" -- ${cur}) )
 }
 
-complete -F _dsm_completion dsm
+complete -F _dsm_completion dremove
