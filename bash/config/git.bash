@@ -12,11 +12,20 @@ ___git_add_tag() {
     git tag "$2" -m "$1"
 }
 
+___git_commit_m() {
+    [[ -z "$1" ]] && {
+        echo "commit message can not be empty"
+        return 1
+    }
+    
+    git commit -m "${1:1}"
+}
+
 
 # Git Alias
 alias ga='git add'
 alias gs='git status -s'
-alias gc='git commit -m "'
+alias gc='___git_commit_m "'
 alias gb='git branch'
 alias gr='git reset'
 alias gas='git add .; git status -s'
