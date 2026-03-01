@@ -15,14 +15,14 @@ init() {
     
     if [ -z "${ZED}" ] || [ "${ZED}" != "1" ]; then
         echo -e "\e[36m"
-        echo "  ∕⁀⧵             "
-        echo "  \ ∕        ∕⁀⧵  "
-        echo "   X            | "
-        echo "  / \ ∕⁀⧵   |   | "
-        echo " |   |   ⧵‿∕ \ /  "
-        echo " |            X   "
-        echo "  ⧵‿∕        ∕ \  "
-        echo "             ⧵‿∕  "
+        echo "  ⡔⠉⢢"
+        echo "  ⢣ ⡜         ⡔⠉⢢"
+        echo "   ⣿            ⢸"
+        echo "  ⡜ ⢣ ⡔⠉⢢   ⡇   ⡜"
+        echo " ⡜   ⡇   ⠣⣀⠜ ⢣ ⡜"
+        echo " ⡇            ⣿"
+        echo " ⠣⣀⠜         ⡜ ⢣"
+        echo "             ⠣⣀⠜"
     fi
     
     unset rc
