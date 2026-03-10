@@ -14,16 +14,19 @@ alias bd='cd ..'
 
 clc () {
     # https://www.gnu.org/software/gawk/manual/html_node/Numeric-Functions.html
-    local expression="$*"
+    local expression="$@"
 
     if [ -z "$expression" ]; then
         echo "Use: c \"<expresion_matematica>\""
         return 1
     fi
 
+    expression="${expression//x/*}"
+    expression="${expression//X/*}"
     expression="${expression//pi/atan2(0, -1)}"
     expression="${expression//e/exp(1)}"
 
+    echo -n "'"${expression}"' = "
     gawk -M -v PREC=201 'BEGIN { printf("%.60g\n", ('"${expression}"') ) }' < /dev/null
 }
 
@@ -39,24 +42,6 @@ activate() {
     else
         echo "There is not a venv directory"
         echo "Directory name: $venv"
-    fi
-}
-
-fm(){
-
-    path="$1"
-    if [ path == "" ]; then
-        path=$(pwd)
-    fi
-
-    if command -v gnome-shell &> /dev/null; then
-        nautilus "$path"
-    elif command -v explorer.exe &> /dev/null; then
-        explorer.exe "$@"
-    elif command -v dolphin &> /dev/null; then
-        dolphin "$path"
-    else
-        echo "No file manager found"
     fi
 }
 
