@@ -6,9 +6,11 @@ init() {
     [[ -d "$HOME/.cargo/bin" ]] && export PATH="$HOME/.cargo/bin:$PATH"
     
     for rc in -d $current/bash/config/*.bash; do
-        if [ -f "$rc" ]; then
-            . "$rc"
-        fi
+        if [ -f "$rc" ]; then . "$rc"; fi
+    done
+    
+    for rc in -d $current/bash/config/completions/*.bash; do
+        if [ -f "$rc" ]; then . "$rc"; fi
     done
     
     . "$current/bash/_shell.bash"

@@ -7,4 +7,4 @@ _dremove_completion() {
         COMPREPLY=( $(compgen -W "$(docker ps -a --format "{{.ID}} {{.Names}}")" -- ${cur}) )
 }
 
-complete -F _dsm_completion dremove
+complete -F _dremove_completion dremove
