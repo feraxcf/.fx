@@ -28,10 +28,27 @@ _bun_completion() {
         COMPREPLY=( $(compgen -W "$(__scripts_completion)" -- ${cur}) )
     }
     
+    [[ "${COMP_CWORD}" == 1 && "$cur" == "." ]] && {
+        COMPREPLY=( $(compgen -o filenames -f "./") )
+        return 0
+    }
+    
+    [[ "${COMP_CWORD}" == 1 && "$cur" == *"/"* ]] && {
+        COMPREPLY=( $(
+            local IFS=$'\n' # Importante para manejar nombres con espacios
+            for c in $(compgen -o filenames -f "$cur"); do
+                # Si 'c' es un directorio Y no termina ya en '/', imprime 'c/'
+                # De lo contrario, imprime 'c' tal cual.
+                [[ -d "$c" && "${c: -1}" != "/" ]] && echo "${c}/" || echo "$c"
+            done
+        ) )
+        return 0
+    }
+    
     [[ "${COMP_CWORD}" == 1 ]] && {
         COMPREPLY=( $(compgen -W "run build exec install add update init create --watch --hot" -- ${cur}) )
     }
     
 }
 
-complete -F _bun_completion bun
+complete -o nospace -F _bun_completion bun
