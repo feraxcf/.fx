@@ -51,4 +51,15 @@ _bun_completion() {
     
 }
 
+_ppm_completions() {
+    local cur
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    
+    [[ "${COMP_CWORD}" == 1 ]] && {
+        COMPREPLY=( $(compgen -W "$(__scripts_completion)" -- ${cur}) )
+    }
+}
+
 complete -o nospace -F _bun_completion bun
+complete -F _ppm_completions ppm
