@@ -2,6 +2,7 @@
 
 init() {
     export current=$(realpath ~/.fx)
+    local inicio=$(date +%s.%N)
     
     [[ -d "$HOME/.cargo/bin" ]] && export PATH="$HOME/.cargo/bin:$PATH"
     
@@ -25,6 +26,8 @@ init() {
         echo " ⡇            ⣿"
         echo " ⠣⣀⠜         ⡜ ⢣"
         echo "             ⠣⣀⠜"
+        echo -e "≃ \e[32m$(sclc "$(date +%s.%N) - $inicio" | cut -c -5)s"
+        echo -ne "\e[0m"
     fi
     
     unset rc

@@ -12,7 +12,7 @@ mksh() {
 
 alias bd='cd ..'
 
-clc () {
+sclc () {
     # https://www.gnu.org/software/gawk/manual/html_node/Numeric-Functions.html
     local expression="$@"
 
@@ -26,8 +26,13 @@ clc () {
     expression="${expression//pi/atan2(0, -1)}"
     expression="${expression//e/exp(1)}"
 
-    echo -n "'"${expression}"' = "
     gawk -M -v PREC=201 'BEGIN { printf("%.60g\n", ('"${expression}"') ) }' < /dev/null
+}
+
+clc () {
+    local expression="$@"
+    echo -n "'"${expression}"' = "
+    sclc "$expression"
 }
 
 activate() {
