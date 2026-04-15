@@ -6,7 +6,7 @@ mkcd() {
 
 mksh() {
     [[ -z "$1" ]] && return 1;
-    touch "$1"
+    echo -e "#!/usr/bin/env bash\n" > "$1"
     chmod +x "$1"
 }
 
