@@ -72,3 +72,7 @@ lenv() {
     
     echo "Finish load: '$ENV_FILE'"
 }
+
+cjson() { 
+    curl -s -D /dev/tty "$@" | jq 
+}
