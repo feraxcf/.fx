@@ -750,10 +750,10 @@ disabled = false
 heuristic = false
 
 [nodejs]
-format = "⌬ [$symbol($version )]($style)"
-version_format = "v${raw}"
-symbol = "♻️  "
-style = "bold green"
+format = "\\[[$symbol]($style) [$version](green)\\] "
+version_format = "${raw}"
+symbol = "node"
+style = "red"
 disabled = false
 not_capable_style = "bold red"
 detect_extensions = [
