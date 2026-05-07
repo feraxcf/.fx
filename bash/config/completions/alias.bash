@@ -36,3 +36,35 @@ _dc_completion() {
 
 complete -o nospace -F _dw_completion dw
 complete -o nospace -F _dc_completion dc
+
+_gc_completion() {
+    local cur prev words
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    words=('feat' 'fix' 'publish' 'docs' 'rewrite' 'refactor' 'test' 'revert' 'release')
+
+    if [[ ${COMP_CWORD} -eq 1 ]]; then
+        COMPREPLY=( $(compgen -W "${words[*]}" -- "$cur") )
+        
+        # Add ':' if there is just one coincidence
+        if [[ ${#COMPREPLY[@]} -eq 1 ]]; then
+            COMPREPLY[0]="${COMPREPLY[0]}: "
+        fi
+        return 0
+    fi
+
+    # autocomplete with files
+    if [[ ${COMP_CWORD} -ge 2 ]]; then
+        COMPREPLY=( $(compgen -f -- "$cur") )
+
+        # if its a directory add a /
+        for i in "${!COMPREPLY[@]}"; do
+            if [[ -d "${COMPREPLY[$i]}" ]]; then
+                COMPREPLY[$i]="${COMPREPLY[$i]}/"
+            fi
+        done
+        return 0
+    fi
+}
+
+complete -o nospace -F _gc_completion gc
