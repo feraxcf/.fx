@@ -41,17 +41,19 @@ _gc_completion() {
     local cur prev words
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
-    words=('feat' 'fix' 'publish' 'docs' 'rewrite' 'refactor' 'test' 'revert' 'release')
+    words=('feat' 'fix' 'publish' 'docs' 'rewrite' 'refactor' 'test' 'revert' 'release' ':root')
 
     if [[ ${COMP_CWORD} -eq 1 ]]; then
-        COMPREPLY=( $(compgen -W "${words[*]}" -- "$cur") )
-        
-        # Add ':' if there is just one coincidence
-        if [[ ${#COMPREPLY[@]} -eq 1 ]]; then
-            COMPREPLY[0]="${COMPREPLY[0]}: "
+            COMPREPLY=( $(compgen -W "${words[*]}" -- "$cur") )
+            
+            if [[ ${#COMPREPLY[@]} -eq 1 && "${COMPREPLY[0]}" != ":root" ]]; then
+                COMPREPLY[0]="${COMPREPLY[0]}: "
+            elif [[ "${COMPREPLY[0]}" == ":root" ]]; then
+                COMPREPLY[0]="${COMPREPLY[0]}\""
+            fi
+            
+            return 0
         fi
-        return 0
-    fi
 
     # autocomplete with files
     if [[ ${COMP_CWORD} -ge 2 ]]; then
