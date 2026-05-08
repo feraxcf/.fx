@@ -45,6 +45,6 @@ if command -v eza &> /dev/null; then
     alias tree='eza --git -T'
 fi
 
-if command -v msedit &> /dev/null; then alias edit='msedit'; fi
+if command -v ie &> /dev/null; then alias edit='ie --full'; fi
 if command -v seaf-cli &> /dev/null; then alias sea='seaf-cli'; fi
 if command -v bat &> /dev/null; then alias cat='bat -pp'; fi
