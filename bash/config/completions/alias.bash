@@ -41,7 +41,7 @@ _gc_completion() {
     local cur prev words
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
-    words=('feat' 'fix' 'publish' 'docs' 'rewrite' 'refactor' 'test' 'revert' 'release' ':root')
+    words=('feat' 'fix' 'publish' 'docs' 'rewrite' 'refactor' 'test' 'revert' 'release' ':root' 'chore')
 
     if [[ ${COMP_CWORD} -eq 1 ]]; then
             COMPREPLY=( $(compgen -W "${words[*]}" -- "$cur") )

@@ -52,3 +52,4 @@ _ppm_completions() {
 
 complete -o nospace -F _bun_completion bun
 complete -F _ppm_completions ppm
+complete -F _ppm_completions nex

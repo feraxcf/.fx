@@ -37,6 +37,7 @@ alias py='python'
 
 # Web related
 alias ppm='pnpm'
+alias nex='bun run'
 
 # Alternative commands
 # if command -v eza &> /dev/null; then alias tree='eza -T'; fi
