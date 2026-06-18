@@ -76,3 +76,45 @@ lenv() {
 cjson() { 
     curl -s -D /dev/tty "$@" | jq 
 }
+
+srsync() {
+    # Color codes for terminal output
+    local RED='\033[0;31m'
+    local GREEN='\033[0;32m'
+    local YELLOW='\033[0;33m'
+    local NC='\033[0m' # No Color
+
+    # Initialize variables to control flow and store clean arguments
+    local use_sudo=false
+    local rsync_args=()
+
+    # Parse all provided arguments safely
+    for arg in "$@"; do
+        if [[ "$arg" == "--sudo" ]]; then
+            use_sudo=true
+        else
+            # Keep all other arguments intact (preserves spaces in paths)
+            rsync_args+=("$arg")
+        fi
+    done
+
+    # Ensure at least a source and destination are provided
+    if [[ ${#rsync_args[@]} -lt 2 ]]; then
+        echo -e "${RED}Error:${NC} Missing arguments."
+        echo -e "${YELLOW}Usage:${NC} srsync [--sudo] <source>... <destination>"
+        echo -e "       similar to ${YELLOW}scp${NC}"
+        return 1
+    fi
+
+    # Execute rsync based on the sudo flag
+    if $use_sudo; then
+        echo -e "${GREEN}Note:${NC} Target machine requires passwordless sudo configuration for 'rsync'."
+        echo -e "      ${GREEN}sudo visudo${NC}"
+        echo -e "      add: "
+        echo -e "        - ${YELLOW}{your_remote_user} ALL=(ALL) NOPASSWD: {rsync path}${NC}"
+        echo -e "        - ${YELLOW}remote ALL=(ALL) NOPASSWD: /usr/bin/rsync${NC}"
+        sudo rsync -aAXHvP -e ssh --rsync-path="sudo rsync" "${rsync_args[@]}"
+    else
+        rsync -aAXHvP -e ssh "${rsync_args[@]}"
+    fi
+}
