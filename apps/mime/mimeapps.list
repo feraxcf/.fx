@@ -6,47 +6,47 @@ text/csv=dev.zed.Zed.desktop
 text/plain=dev.zed.Zed.desktop
 text/html=dev.zed.Zed.desktop
 
-# URI scheme handlers -> app.zen_browser.zen.desktop
-x-scheme-handler/mailto=app.zen_browser.zen.desktop
-x-scheme-handler/http=app.zen_browser.zen.desktop
-x-scheme-handler/https=app.zen_browser.zen.desktop
+# URI scheme handlers -> zen-browser.desktop
+x-scheme-handler/mailto=zen-browser.desktop
+x-scheme-handler/http=zen-browser.desktop
+x-scheme-handler/https=zen-browser.desktop
 
-# Aplication -> app.zen_browser.zen.desktop
-application/xhtml+xml=app.zen_browser.zen.desktop
+# Aplication -> zen-browser.desktop
+application/xhtml+xml=zen-browser.desktop
 
-# Images -> app.zen_browser.zen.desktop
-application/pdf=app.zen_browser.zen.desktop
-image/x-compressed-xcf=app.zen_browser.zen.desktop
-image/x-xcf=app.zen_browser.zen.desktop
-image/x-psd=app.zen_browser.zen.desktop
-image/x-fits=app.zen_browser.zen.desktop
-image/vnd.rn-realpix=app.zen_browser.zen.desktop
-image/x-pict=app.zen_browser.zen.desktop
-image/bmp=app.zen_browser.zen.desktop
-image/gif=app.zen_browser.zen.desktop
-image/jpeg=app.zen_browser.zen.desktop
-image/jpg=app.zen_browser.zen.desktop
-image/pjpeg=app.zen_browser.zen.desktop
-image/png=app.zen_browser.zen.desktop
-image/tiff=app.zen_browser.zen.desktop
-image/x-bmp=app.zen_browser.zen.desktop
-image/x-gray=app.zen_browser.zen.desktop
-image/x-icb=app.zen_browser.zen.desktop
-image/x-ico=app.zen_browser.zen.desktop
-image/x-png=app.zen_browser.zen.desktop
-image/x-portable-anymap=app.zen_browser.zen.desktop
-image/x-portable-bitmap=app.zen_browser.zen.desktop
-image/x-portable-graymap=app.zen_browser.zen.desktop
-image/x-portable-pixmap=app.zen_browser.zen.desktop
-image/x-xbitmap=app.zen_browser.zen.desktop
-image/x-xpixmap=app.zen_browser.zen.desktop
-image/x-pcx=app.zen_browser.zen.desktop
-image/svg+xml=app.zen_browser.zen.desktop
-image/svg+xml-compressed=app.zen_browser.zen.desktop
-image/vnd.wap.wbmp=app.zen_browser.zen.desktop
-image/x-icns=app.zen_browser.zen.desktop
-image/x-eps=app.zen_browser.zen.desktop
-image/x-bzeps=app.zen_browser.zen.desktop
-image/x-gzeps=app.zen_browser.zen.desktop
-image/vnd.djvu+multipage=app.zen_browser.zen.desktop
-image/tiff=app.zen_browser.zen.desktop
+# Images -> zen-browser.desktop
+application/pdf=zen-browser.desktop
+image/x-compressed-xcf=zen-browser.desktop
+image/x-xcf=zen-browser.desktop
+image/x-psd=zen-browser.desktop
+image/x-fits=zen-browser.desktop
+image/vnd.rn-realpix=zen-browser.desktop
+image/x-pict=zen-browser.desktop
+image/bmp=zen-browser.desktop
+image/gif=zen-browser.desktop
+image/jpeg=zen-browser.desktop
+image/jpg=zen-browser.desktop
+image/pjpeg=zen-browser.desktop
+image/png=zen-browser.desktop
+image/tiff=zen-browser.desktop
+image/x-bmp=zen-browser.desktop
+image/x-gray=zen-browser.desktop
+image/x-icb=zen-browser.desktop
+image/x-ico=zen-browser.desktop
+image/x-png=zen-browser.desktop
+image/x-portable-anymap=zen-browser.desktop
+image/x-portable-bitmap=zen-browser.desktop
+image/x-portable-graymap=zen-browser.desktop
+image/x-portable-pixmap=zen-browser.desktop
+image/x-xbitmap=zen-browser.desktop
+image/x-xpixmap=zen-browser.desktop
+image/x-pcx=zen-browser.desktop
+image/svg+xml=zen-browser.desktop
+image/svg+xml-compressed=zen-browser.desktop
+image/vnd.wap.wbmp=zen-browser.desktop
+image/x-icns=zen-browser.desktop
+image/x-eps=zen-browser.desktop
+image/x-bzeps=zen-browser.desktop
+image/x-gzeps=zen-browser.desktop
+image/vnd.djvu+multipage=zen-browser.desktop
+image/tiff=zen-browser.desktop
