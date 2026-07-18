@@ -124,13 +124,13 @@ detect_files = [
 detect_folders = []
 
 [cmd_duration]
-min_time = 1000
+min_time = 1
 format = "took [$duration]($style) "
 style = "yellow bold"
-show_milliseconds = false
+show_milliseconds = true
 disabled = false
-show_notifications = false
-min_time_to_notify = 45000
+show_notifications = true
+min_time_to_notify = 30000
 
 [cobol]
 format = "\\[[$symbol]($style) [$version](green)\\] "
