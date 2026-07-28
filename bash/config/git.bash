@@ -38,6 +38,7 @@ alias rtag='___git_add_tag "'
 alias lst='git tag -l'
 alias stag="git tag -l --format='%(contents)'"
 alias gnt="git update-index --assume-unchanged"
+alias gnnt="git update-index --no-assume-unchanged"
 
 # grp
 if command -v grp &> /dev/null; then
