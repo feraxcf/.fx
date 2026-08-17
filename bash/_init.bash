@@ -14,6 +14,10 @@ init() {
         if [ -f "$rc" ]; then . "$rc"; fi
     done
     
+    for rc in -d $current/bash/config/develop/*.bash; do
+        if [ -f "$rc" ]; then . "$rc"; fi
+    done
+    
     . "$current/bash/_shell.bash"
     
     if [ -z "${ZED}" ] || [ "${ZED}" != "1" ]; then
