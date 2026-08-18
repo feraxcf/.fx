@@ -39,6 +39,7 @@ alias lst='git tag -l'
 alias stag="git tag -l --format='%(contents)'"
 alias gnt="git update-index --assume-unchanged"
 alias gnnt="git update-index --no-assume-unchanged"
+alias gsh="git log -n 1 | grep 'commit' | cut -d' ' -f2"
 
 # grp
 if command -v grp &> /dev/null; then
