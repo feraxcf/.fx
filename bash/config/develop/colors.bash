@@ -17,7 +17,12 @@ cecho() {
 
     local input="$*"
     
-    # Replace escaped << and >> with temporary non-printable characters
+    # Si no hay argumentos y la entrada estándar no es una terminal interactiva, leemos del pipe.
+    if [[ -z "$input" ]] && [[ ! -t 0 ]]; then
+        input="$(cat)"
+    fi
+    
+    # Replace escaped << and >> with temporary non-printable characters 
     input="${input//<</$'\x01'}"
     input="${input//>>/$'\x02'}"
     
