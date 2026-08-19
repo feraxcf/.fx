@@ -8,6 +8,14 @@ mksh() {
     [[ -z "$1" ]] && return 1;
     echo -e "#!/usr/bin/env bash\n" > "$1"
     chmod +x "$1"
+    
+    [[ -z "$2" ]] && cecho "<g>✓ created</> -> <c,u,i>$1"
+    
+    local editors=( "ie" "edit" "zed" "vim" )
+    
+    [[ -n "$2" ]] && [[ " ${editors[*]} " == *" $2 "* ]] && {
+        "$2" "$1"
+    }
 }
 
 alias bd='cd ..'
