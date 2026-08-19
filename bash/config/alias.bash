@@ -50,3 +50,4 @@ fi
 if command -v ie &> /dev/null; then alias edit='ie --full'; fi
 if command -v seaf-cli &> /dev/null; then alias sea='seaf-cli'; fi
 if command -v bat &> /dev/null; then alias cat='bat -pp'; fi
+# if command -v rg &> /dev/null; then alias grep='rg'; fi

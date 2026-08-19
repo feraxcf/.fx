@@ -3,7 +3,8 @@ zip \
 btop \
 eza \
 bat \
-jq
+jq \
+ripgrep
 
 echo "-> Installing starship"
 curl -sS https://starship.rs/install.sh | sh
@@ -25,3 +26,9 @@ version_name=$(curl -s "https://api.github.com/repos/feraxhp/cim/releases/latest
 nversion=$(echo "$version_name" | cut -d'v' -f2)
 
 sudo dnf install -y "https://github.com/feraxhp/cim/releases/download/$version_name/cim-$nversion-1.x86_64.rpm"
+
+echo "-> Installing ie"
+version_name=$(curl -s "https://api.github.com/repos/feraxhp/ie/releases/latest" | jq -r '.name')
+nversion=$(echo "$version_name" | cut -d'v' -f2)
+
+sudo dnf install -y "https://github.com/feraxhp/ie/releases/download/$version_name/ie-$nversion-1.x86_64.rpm"
