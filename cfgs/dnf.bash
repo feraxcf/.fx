@@ -1,5 +1,6 @@
 sudo dnf install -y \
 zip \
+tar \
 btop \
 eza \
 bat \
