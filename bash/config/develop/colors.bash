@@ -1,9 +1,8 @@
-#!/usr/bin/env bash
-
 cecho() {
     local newline="\n"
     local fd=1
     local force_color=0
+    local raw_mode=0
     
     # Parse options
     while [[ "$1" == "-"* ]]; do
@@ -11,6 +10,7 @@ cecho() {
             -n) newline="" ; shift ;;
             -e) shift ;; 
             -c|--force-color) force_color=1 ; shift ;;
+            -r|--raw) raw_mode=1 ; force_color=1 ; shift ;;
             *) break ;;
         esac
     done
@@ -174,7 +174,20 @@ cecho() {
     out="${out//$'\x01'/<}"
     out="${out//$'\x02'/>}"
     
-    printf "%b${newline}" "$out" >&$fd
+    # --- Modificación principal para --raw ---
+    if (( raw_mode == 1 )); then
+        local echo_cmd="echo -e"
+        # Si se usó -n, no imprimimos la nueva línea y usamos echo -en
+        if [[ -z "$newline" ]]; then
+            echo_cmd="echo -en"
+        fi
+        
+        # Escapamos comillas dobles para que el comando sea válido
+        local escaped_out="${out//\"/\\\"}"
+        printf "%s \"%s\"\n" "$echo_cmd" "$escaped_out" >&$fd
+    else
+        printf "%b${newline}" "$out" >&$fd
+    fi
 }
 
 cerr() { cecho "$@" >&2; }
