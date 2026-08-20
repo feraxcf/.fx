@@ -5,10 +5,11 @@ mkdir -p ~/.fx/.tmp
 curl -Lo ~/.fx/.tmp/.git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 
 echo ""
-echo -e "[user]\n	name = feraxhp\n	email = feraxhp+gh@gmail.com\n	email = signingkey" >> ~/.gitconfig
+echo -e "[user]\n	name = feraxhp\n	email = feraxhp+gh@gmail.com\n	email = signingkey" > ~/.gitconfig
 
 if command -v ie >/dev/null 2>&1; then
     echo -e "[core]\n	editor = ie -f markdown" >> ~/.gitconfig
 fi
 
 echo -e "[init]\n	defaultBranch = main" >> ~/.gitconfig
+echo -e "[commit]\n	gpgsign = true" >> ~/.gitconfig
