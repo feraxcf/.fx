@@ -150,3 +150,21 @@ run() {
         cecho "<error>[error]</> <g>The file '<file>$script</>' does not exist</>"
     fi
 }
+
+pop() {
+    local url='ext+wam:'
+    
+    [[ -n "$2" ]] && {
+        url="$url$2|"
+    }
+    [[ -n "$1" ]] && {
+        url="$url$1"
+    } || {
+        cecho "<error>[error]</> At least the url must be provided"
+        return 1
+    }
+    
+    if command -v zen &> /dev/null; then
+        zen "$url" && cecho "<g>✓ opened on zen</> -> <c,u,i>'$url'"
+    fi
+}
