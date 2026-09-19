@@ -39,6 +39,7 @@ alias py='python'
 # Web related
 alias ppm='pnpm'
 alias nex='bun run'
+alias lig='ie .git/info/exclude'
 
 # Alternative commands
 # if command -v eza &> /dev/null; then alias tree='eza -T'; fi
