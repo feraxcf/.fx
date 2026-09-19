@@ -15,6 +15,19 @@ cf-session() {
     CF_HOME="$cf_dir" PROMPT_EXTRA="[cf:$profile]" $SHELL
 }
 
+__internal_completer() {
+    local cf_dir="$HOME/.config/cf-profiles"
+    local curr_word="${COMP_WORDS[COMP_CWORD]}"
+    
+    if [[ "${COMP_CWORD}" -eq 1 ]]; then
+        if [[ -d "$cf_dir" ]]; then 
+            COMPREPLY=( $(cd "$cf_dir" 2>/dev/null && compgen -d -- "$curr_word") )
+        else
+            COMPREPLY=( $(compgen -W "dev prod" -- "$curr_word") )
+        fi
+    fi
+}
+
 (return 2>/dev/null) || { 
     . "$HOME/.fx/bash/config/develop/colors.bash"
     cf-session "$@"; 

@@ -75,11 +75,35 @@ _run_completions() {
     local curr_word="${COMP_WORDS[COMP_CWORD]}"
     local scripts_dir="$HOME/.fx/bash/config/scripts"
 
-    if [[ ${COMP_CWORD} -eq 1 ]]; then
+    if [[ "${COMP_CWORD}" -eq 1 ]]; then
         local available_scripts=$(ls -1 "$scripts_dir" 2>/dev/null)
         COMPREPLY=( $(compgen -W "$available_scripts" -- "$curr_word") )
     else
-        COMPREPLY=( $(compgen -f -- "$curr_word") )
+        local target_script="${COMP_WORDS[1]}"
+        
+        if [[ -x "$scripts_dir/$target_script" ]]; then
+            # Source the target script to load __internal_completer
+            . "$scripts_dir/$target_script" 2>/dev/null
+            
+            # Check if the function was actually loaded
+            if declare -f __internal_completer >/dev/null; then
+                local orig_cword="$COMP_CWORD"
+                local orig_words=("${COMP_WORDS[@]}")
+                
+                COMP_WORDS=( "${COMP_WORDS[@]:1}" ) 
+                COMP_CWORD=$(( COMP_CWORD - 1 )) 
+                __internal_completer
+                
+                unset -f __internal_completer
+                
+                COMP_WORDS=("${orig_words[@]}")
+                COMP_CWORD="$orig_cword"
+            else
+                COMPREPLY=( $(compgen -f -- "$curr_word") )
+            fi
+        else
+            COMPREPLY=( $(compgen -f -- "$curr_word") )
+        fi
     fi
 }
 
