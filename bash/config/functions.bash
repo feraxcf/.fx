@@ -168,3 +168,9 @@ pop() {
         zen "$url" && cecho "<g>✓ opened on zen</> -> <c,u,i>'$url'"
     fi
 }
+
+cpath() {
+    local path=$(pwd)
+    wl-copy "$path"
+    cecho "<g>✓ copied: '<file>$path</>'"
+}
