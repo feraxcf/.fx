@@ -140,8 +140,10 @@ srsync() {
 }
 
 # Scripts runner
+export FX_SCRIPTS="$HOME/.fx/bash/config/scripts"
 run() {
-    local script="$HOME/.fx/bash/config/scripts/$1"
+    local script_dir="$FX_SCRIPTS"
+    local script="$script_dir/$1"
     shift
     
     if [[ -x "$script" ]]; then 
