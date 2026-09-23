@@ -171,6 +171,5 @@ pop() {
 
 cpath() {
     local path=$(pwd)
-    wl-copy "$path"
-    cecho "<g>✓ copied: '<file>$path</>'"
+    wl-copy "$path" && cecho "<g>✓ copied: '<file>$path</>'"
 }
