@@ -5,6 +5,7 @@ alias x='exit 0'
 alias rl='source ~/.bashrc'
 alias rs='cl && rl'
 alias ns='niri-session'
+alias ::='run'
 
 # frecuent paths 
 move_to() {

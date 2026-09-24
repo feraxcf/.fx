@@ -108,3 +108,4 @@ _run_completions() {
 }
 
 complete -F _run_completions run
+complete -F _run_completions ::

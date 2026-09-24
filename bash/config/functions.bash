@@ -146,10 +146,14 @@ run() {
     local script="$script_dir/$1"
     shift
     
+    [[ -z "$1" ]] && { 
+        cerr "<error>[error]</> <g>The name of the script is requiered</>"
+        return 1
+    }
     if [[ -x "$script" ]]; then 
         "$script" "$@"
     else
-        cecho "<error>[error]</> <g>The file '<file>$script</>' does not exist</>"
+        cerr "<error>[error]</> <g>The file '<file>$script</>' does not exist</>"
     fi
 }
 
