@@ -57,16 +57,15 @@ _gc_completion() {
 
     # autocomplete with files
     if [[ ${COMP_CWORD} -ge 2 ]]; then
-        COMPREPLY=( $(compgen -f -- "$cur") )
-
-        # if its a directory add a /
-        for i in "${!COMPREPLY[@]}"; do
-            if [[ -d "${COMPREPLY[$i]}" ]]; then
-                COMPREPLY[$i]="${COMPREPLY[$i]}/"
-            fi
-        done
+        __files_completer "$curr"
         return 0
     fi
+}
+
+__files_completer() {
+    # Enable native filename formatting for this specific completion
+    compopt -o filenames
+    mapfile -t COMPREPLY < <(compgen -f -- "$1")
 }
 
 complete -o nospace -F _gc_completion gc
@@ -99,10 +98,10 @@ _run_completions() {
                 COMP_WORDS=("${orig_words[@]}")
                 COMP_CWORD="$orig_cword"
             else
-                COMPREPLY=( $(compgen -f -- "$curr_word") )
+                __files_completer "$curr_word"
             fi
         else
-            COMPREPLY=( $(compgen -f -- "$curr_word") )
+            __files_completer "$curr_word"
         fi
     fi
 }
