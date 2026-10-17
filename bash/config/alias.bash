@@ -33,6 +33,7 @@ alias home='move_to ~'
 
 # Rust-related aliases
 alias cw='bacon --headless run-long -- -q'
+alias ts='RUSTFLAGS="-Awarnings" bacon test --'
 
 # Python
 alias py='python'
