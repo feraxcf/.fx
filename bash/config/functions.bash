@@ -175,7 +175,8 @@ pop() {
     fi
 }
 
-cpath() {
-    local path=$(pwd)
+ph-copy() {
+    local path="$1"
+    [[ -z "$1" ]] && { path=$(pwd); } || { path=$(realpath "$1"); }
     wl-copy "$path" && cecho "<g>✓ copied: '<file>$path</>'"
 }

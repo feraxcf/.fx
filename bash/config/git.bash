@@ -86,7 +86,7 @@ if command -v __git_complete &> /dev/null; then
     __git_complete gck git_checkout
     # __git_complete gcb ---
     # __git_complete gsr ---
-    # __git_complete gcm ---
+    __git_complete gcm _git_commit
     __git_complete gp  git_push
     __git_complete gj  git_pull
     __git_complete gsa git_add
