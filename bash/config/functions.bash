@@ -144,12 +144,13 @@ export FX_SCRIPTS="$HOME/.fx/bash/config/scripts"
 run() {
     local script_dir="$FX_SCRIPTS"
     local script="$script_dir/$1"
-    shift
     
     [[ -z "$1" ]] && { 
         cerr "<error>[error]</> <g>The name of the script is requiered</>"
         return 1
     }
+    
+    shift
     if [[ -x "$script" ]]; then 
         "$script" "$@"
     else
