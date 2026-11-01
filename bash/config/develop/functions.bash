@@ -7,3 +7,11 @@ dgrp() {
         echo "Please compile grp on debug mode"
     }
 }
+
+die() {
+    [[ -f "$HOME/projects/pprojects/ie/target/debug/ie" ]] && {
+        "$HOME/projects/pprojects/ie/target/debug/ie" "$@"
+    } || {
+        echo "Please compile ie on debug mode"
+    }
+}
