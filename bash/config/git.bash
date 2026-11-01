@@ -93,3 +93,50 @@ if command -v __git_complete &> /dev/null; then
     __git_complete gl  git_log
     __git_complete gd  git_diff
 fi
+
+if command -v _clap_complete_grp &> /dev/null; then
+    
+    declare -gA _GRP_ALIAS_MAP
+    
+    _grp_alias_complete() {
+        local cmd="$1"
+        local cur="$2"
+        local prev="$3"
+        
+        local subcmd="${_GRP_ALIAS_MAP[$cmd]}"
+        [[ -z "$subcmd" ]] && return 1
+        
+        local -a injected=($subcmd)
+        
+        # Variables locales dinámicamente visibles para _clap_complete_grp
+        local COMP_WORDS=("grp" "${injected[@]}" "${COMP_WORDS[@]:1}")
+        local COMP_CWORD=$(( COMP_CWORD + ${#injected[@]} ))
+        
+        # Si estamos completando el primer argumento luego del alias,
+        # el 'prev' para grp pasa a ser el último subcomando inyectado
+        if [[ $COMP_CWORD -eq $((${#injected[@]} + 1)) ]]; then
+            prev="${injected[-1]}"
+        fi
+        
+        _clap_complete_grp "grp" "$cur" "$prev"
+    }
+
+    grp_complete_alias() {
+        local alias_name="$1"
+        shift
+        local subcmds="$*"
+        
+        _GRP_ALIAS_MAP["$alias_name"]="$subcmds"
+        
+        local -a opts=(-o nospace -o bashdefault)
+        if [[ "${BASH_VERSINFO[0]}" -gt 4 || ( "${BASH_VERSINFO[0]}" -eq 4 && "${BASH_VERSINFO[1]}" -ge 4 ) ]]; then
+            opts+=(-o nosort)
+        fi
+        
+        complete "${opts[@]}" -F _grp_alias_complete "$alias_name"
+    }
+    
+    grp_complete_alias gp push
+    grp_complete_alias gj pull
+    grp_complete_alias gcl clone
+fi
