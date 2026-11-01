@@ -18,7 +18,14 @@ ___git_commit_m() {
         return 1
     }
     
-    git commit -m "${1:1}"
+    local msg="${1:1}"
+
+    # Si viene formato "tipo:scope mensaje" o "tipo:scope: mensaje", transformar a "tipo(scope): mensaje"
+    if [[ "$msg" =~ ^([a-zA-Z]+):([^[:space:]:]+):?[[:space:]]+(.*)$ ]]; then
+        msg="${BASH_REMATCH[1]}(${BASH_REMATCH[2]}): ${BASH_REMATCH[3]}"
+    fi
+    
+    git commit -m "$msg"
 }
 
 

@@ -37,6 +37,15 @@ _dc_completion() {
 complete -o nospace -F _dw_completion dw
 complete -o nospace -F _dc_completion dc
 
+__git_commit_scopes() {
+    {
+        git log -n 500 --format=%s 2>/dev/null | sed -nE 's/^[a-zA-Z]+\(([^)]+)\):.*/\1/p'
+        local root
+        root=$(git rev-parse --show-toplevel 2>/dev/null)
+        [[ -n "$root" && -f "$root/.gitscopes" ]] && cat "$root/.gitscopes"
+    } | sort -u
+}
+
 _gc_completion() {
     local cur prev words
     cur="${COMP_WORDS[COMP_CWORD]}"
@@ -44,20 +53,40 @@ _gc_completion() {
     words=('feat' 'fix' 'publish' 'docs' 'rewrite' 'refactor' 'test' 'revert' 'release' ':root' 'chore')
 
     if [[ ${COMP_CWORD} -eq 1 ]]; then
-            COMPREPLY=( $(compgen -W "${words[*]}" -- "$cur") )
-            
-            if [[ ${#COMPREPLY[@]} -eq 1 && "${COMPREPLY[0]}" != ":root" ]]; then
-                COMPREPLY[0]="${COMPREPLY[0]}: "
-            elif [[ "${COMPREPLY[0]}" == ":root" ]]; then
-                COMPREPLY[0]="${COMPREPLY[0]}\""
+        # Caso 1: Se está completando el scope pegado al tipo (ej. "feat:" o "feat:iss")
+        if [[ "$cur" == ?*:?* || ( "$cur" == *: && "$cur" != ":"* ) ]]; then
+            local type="${cur%%:*}"
+            local scope_prefix="${cur#*:}"
+            local scopes
+            scopes=$(__git_commit_scopes)
+
+            mapfile -t COMPREPLY < <(compgen -W "$scopes" -- "$scope_prefix")
+
+            if [[ ${#COMPREPLY[@]} -eq 1 ]]; then
+                COMPREPLY[0]="${type}:${COMPREPLY[0]} "
+            else
+                for i in "${!COMPREPLY[@]}"; do
+                    COMPREPLY[$i]="${type}:${COMPREPLY[$i]}"
+                done
             fi
-            
             return 0
         fi
 
+        # Caso 2: Completando el tipo inicial (ej. "fea" -> "feat:")
+        COMPREPLY=( $(compgen -W "${words[*]}" -- "$cur") )
+        
+        if [[ ${#COMPREPLY[@]} -eq 1 && "${COMPREPLY[0]}" != ":root" ]]; then
+            COMPREPLY[0]="${COMPREPLY[0]}:"
+        elif [[ "${COMPREPLY[0]}" == ":root" ]]; then
+            COMPREPLY[0]="${COMPREPLY[0]}\""
+        fi
+        
+        return 0
+    fi
+
     # autocomplete with files
     if [[ ${COMP_CWORD} -ge 2 ]]; then
-        __files_completer "$curr"
+        __files_completer "$cur"
         return 0
     fi
 }
